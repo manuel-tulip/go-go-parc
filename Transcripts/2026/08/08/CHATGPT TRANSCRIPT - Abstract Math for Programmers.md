@@ -1661,7 +1661,6 @@ A computation specification can return both postconditions and resource constrai
 \[
   \mathrm{WP}_r(Y)
   = (Y\to\mathrm{Prop})\to X\to\mathrm{Prop}
-
 a
 \]
 
@@ -2934,18 +2933,18 @@ The completed textbook contains **28 chapters, 150 PDF pages, more than 280 exer
 
 Its central formalization is:
 
-\[
+$$
 h:X\longrightarrow T_r(Y\times \mathrm{Trace})
-\]
+$$
 
 for an effectful, resource-indexed harness, together with an admissible-candidate type
 
-\[
+$$
 \mathrm{Candidate}(C)
 =
 \sum_{h:\mathrm{Harness}(X,Y)}
 \mathrm{Admissible}_C(h).
-\]
+$$
 
 This deliberately separates machine-checkable admissibility from empirical objectives such as quality, cost, latency, and judge score.
 

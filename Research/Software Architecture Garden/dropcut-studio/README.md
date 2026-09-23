@@ -73,6 +73,29 @@ delimits and correlates per-command replies.
 - [[Research/Software Architecture Garden/dropcut-studio/designs/02 - Latched Safety Channel over a Lossy Inbound Queue|02 — Latched Safety Channel over a Lossy Inbound Queue]] *(facet: safety delivery / observability)*
 - [[Research/Software Architecture Garden/dropcut-studio/designs/03 - Dead-Man Keepalive - Fail-Safe Motion by Causal Inversion|03 — Dead-Man Keepalive: Fail-Safe Motion by Causal Inversion]] *(facet: fail-safe action)*
 
+### Implementation-derived entries added 2026-09-13
+
+- [[Research/Software Architecture Garden/dropcut-studio/designs/06 - Consecutive Evidence Observer - Completion Without Owning the Operation|06 — Consecutive Evidence Observer]] — a domain-classified reducer for consecutive completion evidence, independent of polling and transport.
+- [[Research/Software Architecture Garden/dropcut-studio/designs/07 - Browser Intent Ownership - Confirm Once and Renew Only While Held|07 — Browser Intent Ownership]] — one-shot confirmation and held-gesture lifecycles outside React, with stale-response fencing and explicit cleanup limits.
+
+These entries describe commits `a5faea1` and `8b8d947`; they do not replace the historical analysis above or establish new hardware acceptance.
+
+### Bounded observation and subscription pattern added 2026-09-13
+
+- [[Research/Software Architecture Garden/dropcut-studio/designs/08 - Bounded Cursor Broadcast - Independent Readers with Explicit Gaps|08 — Bounded Cursor Broadcast: Independent Readers with Explicit Gaps]] — one bounded shared history, independent reader cursors, explicit retention loss, snapshot-to-subscription continuity and cancellation independent of machine operations.
+
+Updated after implementation commit `be7c744`: the entry now documents the concrete
+`pkg/broadcast.Buffer[T]` API and all three integrations—protocol observations,
+controller snapshots/subscriptions and the legacy diagnostic message journal.
+The shared extraction is implemented and its focused race tests and vet pass. The pattern
+requires neither a message broker nor a lossless journal. Earlier entries remain
+historical analyses, not a claim that old grant/dead-man proposals are current
+stock-firmware capabilities or current P3 requirements.
+
+### Controller ownership and evidence separation added 2026-09-13
+
+- [[Research/Software Architecture Garden/dropcut-studio/designs/09 - Single-Owner CNC Controller - Worker Ownership Separate from Operation Evidence|09 — Single-Owner CNC Controller: Worker Ownership Separate from Operation Evidence]] — the actual controller architecture, two identified command/review slots, concrete evidence checks, cancellation/reconciliation behavior and a deliberate complexity budget. Implemented cleanup at `da0d33d`; broader P3 and production cutover remain incomplete.
+
 ## Proposals
 
 - [[Research/Software Architecture Garden/dropcut-studio/proposals/01-z1-communication-api-design-and-implementation-guide|01 — Z1 Communication API: Design and Implementation Guide (Intern Edition)]] — a concrete `pkg/z1session` API design realizing designs 01–04 above.
